@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-4">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <h2>{{ participant.pseudo }}</h2>
+            </div>
+        </div>
+
+
+        <div class="row rowspan-4">
+            <div class="col-3">
+            <img style="height:200px; width: 200px;" src="{{ asset('images/photoUtilisateur/' ~ participant.photo) }}">
+            </div>
+            <div class="col-6">
+                <label class="form-label" for="prenom">Prénom : </label>
+                <input class="form-control"  id="prenom" value="{{ participant.prenom }}" disabled>
+                <label class="form-label" for="nom">Nom : </label>
+                <input class="form-control"  id="nom" value="{{ participant.Nom }}" disabled>
+                <label class="form-label" for="telephone">Téléphone : </label>
+                <input class="form-control"  id="telephone" value="{{ participant.telephone }}" disabled>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="offset-3 col-6">
+                <label class="form-label" for="email">Email : </label>
+                <input class="form-control"  id="email" value="{{ participant.email }}" disabled>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-3 col-6">
+                <label class="form-label" for="campus">Campus : </label>
+                <input class="form-control"  id="campus" value="{{ participant.campus.nom }}" disabled>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="offset-5 col-3">
+                <a href="{{ path('sortie_liste') }}" class="btn btn-success mx-3 my-3">Retour à l'accueil</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

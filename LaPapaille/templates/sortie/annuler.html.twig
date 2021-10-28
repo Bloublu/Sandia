@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container" my-4>
+    <div class="row">
+        <div class="offset-3 col-6">
+            <h2>Annuler une sortie</h2>
+            {{ form_start(formAnnuler) }}
+
+            {{ form_widget(formAnnuler) }}
+            <label class="form-label"  for="campus">Campus</label>
+            <input class="form-control"  id="campus" disabled>
+            <button class="btn btn-warning my-3" type="submit">Enregistrer</button>
+            <a href="{{ path('sortie_liste') }}" class="btn btn-secondary my-3">Annuler</a>
+            {{ form_end(formAnnuler) }}
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset('javascript/ModifierSortie.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

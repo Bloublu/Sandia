@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Découvrez tous les détails de la sortie  : {{ sortie.nom }} !</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="dateHeure">Date et heure de la sortie : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="prenom" value="{{ sortie.dateHeureDebut|date ('d - M - Y  H:i') }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="dateInscription">Date limite d'inscription : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="dateInscription" value="{{ sortie.dateLimiteInscription|date (' d - M - Y  H:i') }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="nbPlaces">Nombre de places : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="dateInscription" value="{{ sortie.nbInscriptionsMax }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="duree">Durée : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="dateInscription" value="{{ sortie.duree }} minutes" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="infosSortie">Description et infos : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="dateInscription" value="{{ sortie.infosSortie }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="campus">Campus : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="campus" value="{{ sortie.campus.nom }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="lieu">Lieu : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="lieu" value="{{ sortie.lieu.nom }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="rue">Rue : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="rue" value="{{ sortie.lieu.rue }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="cp">Code postal : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="cp" value="{{ sortie.lieu.ville.codePostal }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="latitude">Latitude : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="latitude" value="{{ sortie.lieu.latitude }}" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-2 my-2">
+            <label class="form-label" for="longitude">Longitude : </label>
+        </div>
+        <div class="col-4 my-2">
+            <input class="form-control"  id="longitude" value="{{ sortie.lieu.longitude }}" disabled>
+        </div>
+    </div>
+
+    <h4>Liste des participants inscrits :</h4>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Nom</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for p in sortie.participants %}
+                <tr>
+                    <td><a href="{{ path('participant_afficher', {'participant': p.id}) }}">{{ p.pseudo }}</a></td>
+                    <td>{{ p.prenom }} {{ p.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
